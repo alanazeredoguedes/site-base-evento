@@ -115,11 +115,17 @@ class AtividadeEventoAdmin extends AbstractAdmin
 
         $listMapper
             //->addIdentifier('id')
-            
+            ->add('diaEvento', null, [
+                'label' => 'DiaEvento',
+                'associated_property' => 'dia',
+            ])
             ->addIdentifier('horario', null, [
                 'label' => 'Horario',
-                'format' => 'd/m/Y h:i:s',
-                
+                'format' => 'h:i:s',
+            ])
+            ->add('palestrante', null, [
+                'label' => 'Palestrante',
+                'associated_property' => 'nome',
             ])
             ->addIdentifier('atividade', null, [
                 'label' => 'Atividade',
@@ -128,17 +134,10 @@ class AtividadeEventoAdmin extends AbstractAdmin
             ])
             ->addIdentifier('descricao', null, [
                 'label' => 'Descricao',
-                
-                
+
             ])
-            ->add('diaEvento', null, [
-                'label' => 'DiaEvento',
-                'associated_property' => 'dia',
-            ])
-            ->add('palestrante', null, [
-                'label' => 'Palestrante',
-                'associated_property' => 'nome',
-            ])          
+
+
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -151,14 +150,32 @@ class AtividadeEventoAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            
-            ->add('horario', DateTimeType::class, [
+
+            ->add('diaEvento', ModelType::class,[
+                'class' => DiaEvento::class,
+                'property' => 'dia',
+                'label' => 'Dia:',
+                'required' => false,
+
+                'expanded' => false,
+                'help' => '',
+            ])
+            ->add('horario', TimeType::class, [
                 'label' => 'Horario:',
                 'required' => true,
                 'widget' => 'single_text',
                 'constraints' => [ 
                     new NotNull(),
              ],
+                'help' => '',
+            ])
+            ->add('palestrante', ModelType::class,[
+                'class' => Palestrante::class,
+                'property' => 'nome',
+                'label' => 'Palestrante:',
+                'required' => false,
+
+                'expanded' => false,
                 'help' => '',
             ])
             ->add('atividade', TextType::class, [
@@ -179,24 +196,7 @@ class AtividadeEventoAdmin extends AbstractAdmin
              ],
                 'help' => '',
             ])
-            ->add('diaEvento', ModelType::class,[
-                'class' => DiaEvento::class,
-                'property' => 'dia',
-                'label' => 'DiaEvento:',
-                'required' => false,
-                
-                'expanded' => false,
-                'help' => '',
-            ])
-            ->add('palestrante', ModelType::class,[
-                'class' => Palestrante::class,
-                'property' => 'nome',
-                'label' => 'Palestrante:',
-                'required' => false,
-                
-                'expanded' => false,
-                'help' => '',
-            ])
+
         ;
     }
     

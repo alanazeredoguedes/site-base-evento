@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Application\Hackthon\AtividadeEventoBundle\Entity\AtividadeEvento;
+use App\Application\Hackthon\DiaEventoBundle\Entity\DiaEvento;
 use App\Application\Hackthon\FaqBundle\Entity\Faq;
 use App\Application\Hackthon\PalestranteBundle\Entity\Palestrante;
 use App\Application\Hackthon\PatrocinadorBundle\Entity\Patrocinador;
@@ -24,6 +26,8 @@ class SiteController extends AbstractController
         $patrocinadores = $em->getRepository(Patrocinador::class)->findAll();
         $palestrantes = $em->getRepository(Palestrante::class)->findAll();
 
+        $diasEvento = $em->getRepository(DiaEvento::class)->findAll();
+        $atividadesEvento = $em->getRepository(AtividadeEvento::class)->findAll();
 
 
         return $this->render('site/index.html.twig', [
@@ -31,6 +35,8 @@ class SiteController extends AbstractController
             'patrocinadores' => $patrocinadores,
             'sobre' => $sobre,
             'palestrantes' => $palestrantes,
+            'diasEvento' => $diasEvento,
+            'atividadesEvento' => $atividadesEvento,
 
         ]);
     }

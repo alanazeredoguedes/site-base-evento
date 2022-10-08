@@ -9,12 +9,15 @@
             {% for index, palestrante in  palestrantes %}
             <div class="col-lg-4 col-md-6">
                 <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-                    {% thumbnail palestrante.foto , 'reference' with {'class': 'imagem_palestrante img-fluid'}  %}
+                    {% if palestrante.foto is defined and palestrante.foto is not empty %}
+                        {% thumbnail palestrante.foto , 'reference' with {'class': 'imagem_palestrante img-fluid'}  %}
+                    {% else %}
+                        <img title="1.jpg" alt="1.jpg" class="imagem_palestrante img-fluid" src="{{ asset('/img/venue-gallery/8.jpg') }}">
+                    {% endif %}
                     <div class="details">
                         <h3><a href="javascript:void(0)">{{ palestrante.nome }}</a></h3>
                         <p>{{ palestrante.descricao }}</p>
                         <div class="social">
-
 
                             {% if palestrante.email is defined and palestrante.email is not empty %}
                                 <a target="_blank" href="{{ palestrante.email }}"><i class="bi bi-mailbox2"></i></a>
