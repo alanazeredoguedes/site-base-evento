@@ -1,0 +1,3 @@
+hackthon_patrocinador:
+    resource: "@ApplicationHackthonPatrocinadorBundle/Controller/"
+    type:     annotation

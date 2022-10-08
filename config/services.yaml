@@ -1,0 +1,122 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: 'pt_BR'
+    mailer_user: 'noreply@email.com.br'
+    brochures_directory: '%kernel.project_dir%/public/upload/brochures'
+    #sonata.media.admin.media.class: App\Application\Sonata\MediaBundle\Admin\MediaAdmin
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $projectDir: '%kernel.project_dir%'
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    sonata.user.admin.user:
+      class: "%sonata.user.admin.user.class%"
+      arguments: [ ~, "%sonata.user.admin.user.entity%", "%sonata.user.admin.user.controller%" ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: "%sonata.user.admin.groupname%", label_catalogue: "%sonata.user.admin.label_catalogue%", label: "users", icon: "<i class=\"fa fa-users\"></i>", show_in_dashboard: true }
+      calls:
+        - [ setUserManager, [ "@fos_user.user_manager" ] ]
+        - [ setTranslationDomain, [ "%sonata.user.admin.user.translation_domain%" ] ]
+
+    sonata.user.admin.group:
+      class: "%sonata.user.admin.group.class%"
+      arguments: [ ~, "%sonata.user.admin.group.entity%", "%sonata.user.admin.group.controller%" ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: "%sonata.user.admin.groupname%", label_catalogue: "%sonata.user.admin.label_catalogue%", label: "groups", show_in_dashboard: true }
+      calls:
+        - [ setTranslationDomain, [ "%sonata.user.admin.group.translation_domain%" ] ]
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    # //////////////////////////////////////////////////////////////////////////////////////////////// #
+
+    hackthon.palestrante.palestrante:
+      class:  App\Application\Hackthon\PalestranteBundle\Admin\PalestranteAdmin
+      arguments:  [ ~ , App\Application\Hackthon\PalestranteBundle\Entity\Palestrante, App\Application\Hackthon\PalestranteBundle\Controller\PalestranteAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "Palestrantes", label: Palestrantes, on_top: true }
+
+    hackthon.diaevento.diaevento:
+      class:  App\Application\Hackthon\DiaEventoBundle\Admin\DiaEventoAdmin
+      arguments:  [ ~ , App\Application\Hackthon\DiaEventoBundle\Entity\DiaEvento, App\Application\Hackthon\DiaEventoBundle\Controller\DiaEventoAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "DiasEvento", label: DiasEvento, on_top: true }
+
+    hackthon.atividadeevento.atividadeevento:
+      class:  App\Application\Hackthon\AtividadeEventoBundle\Admin\AtividadeEventoAdmin
+      arguments:  [ ~ , App\Application\Hackthon\AtividadeEventoBundle\Entity\AtividadeEvento, App\Application\Hackthon\AtividadeEventoBundle\Controller\AtividadeEventoAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "AtividadesEvento", label: AtividadesEvento, on_top: true }
+
+    hackthon.local.local:
+      class:  App\Application\Hackthon\LocalBundle\Admin\LocalAdmin
+      arguments:  [ ~ , App\Application\Hackthon\LocalBundle\Entity\Local, App\Application\Hackthon\LocalBundle\Controller\LocalAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "Locais", label: Locais, on_top: true }
+
+    hackthon.galeria.galeria:
+      class:  App\Application\Hackthon\GaleriaBundle\Admin\GaleriaAdmin
+      arguments:  [ ~ , App\Application\Hackthon\GaleriaBundle\Entity\Galeria, App\Application\Hackthon\GaleriaBundle\Controller\GaleriaAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "Galeria", label: Galeria, on_top: true }
+
+    hackthon.patrocinador.patrocinador:
+      class:  App\Application\Hackthon\PatrocinadorBundle\Admin\PatrocinadorAdmin
+      arguments:  [ ~ , App\Application\Hackthon\PatrocinadorBundle\Entity\Patrocinador, App\Application\Hackthon\PatrocinadorBundle\Controller\PatrocinadorAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "Patrocinadores", label: Patrocinadores, on_top: true }
+
+    hackthon.faq.faq:
+      class:  App\Application\Hackthon\FaqBundle\Admin\FaqAdmin
+      arguments:  [ ~ , App\Application\Hackthon\FaqBundle\Entity\Faq, App\Application\Hackthon\FaqBundle\Controller\FaqAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "Faq", label: Faq, on_top: true }
+
+    hackthon.faleconosco.faleconosco:
+      class:  App\Application\Hackthon\FaleConoscoBundle\Admin\FaleConoscoAdmin
+      arguments:  [ ~ , App\Application\Hackthon\FaleConoscoBundle\Entity\FaleConosco, App\Application\Hackthon\FaleConoscoBundle\Controller\FaleConoscoAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "FaleConosco", label: FaleConosco, on_top: true }
+
+    hackthon.banner.banner:
+      class:  App\Application\Hackthon\BannerBundle\Admin\BannerAdmin
+      arguments:  [ ~ , App\Application\Hackthon\BannerBundle\Entity\Banner, App\Application\Hackthon\BannerBundle\Controller\BannerAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "Banner", label: Banner, on_top: true }
+
+    hackthon.sobre.sobre:
+      class:  App\Application\Hackthon\SobreBundle\Admin\SobreAdmin
+      arguments:  [ ~ , App\Application\Hackthon\SobreBundle\Entity\Sobre, App\Application\Hackthon\SobreBundle\Controller\SobreAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "Sobre", label: Sobre, on_top: true }
+
+    hackthon.evento.evento:
+      class:  App\Application\Hackthon\EventoBundle\Admin\eventoAdmin
+      arguments:  [ ~ , App\Application\Hackthon\EventoBundle\Entity\evento, App\Application\Hackthon\EventoBundle\Controller\eventoAdminController ]
+      tags:
+          - {name: sonata.admin, manager_type: orm, group: "evento", label: evento, on_top: true }

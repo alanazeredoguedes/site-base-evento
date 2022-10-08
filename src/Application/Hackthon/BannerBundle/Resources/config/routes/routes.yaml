@@ -1,0 +1,3 @@
+hackthon_banner:
+    resource: "@ApplicationHackthonBannerBundle/Controller/"
+    type:     annotation

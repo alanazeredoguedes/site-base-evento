@@ -1,0 +1,3 @@
+hackthon_sobre:
+    resource: "@ApplicationHackthonSobreBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,3 @@
+hackthon_palestrante:
+    resource: "@ApplicationHackthonPalestranteBundle/Controller/"
+    type:     annotation

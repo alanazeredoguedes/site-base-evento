@@ -1,0 +1,3 @@
+hackthon_diaevento:
+    resource: "@ApplicationHackthonDiaEventoBundle/Controller/"
+    type:     annotation

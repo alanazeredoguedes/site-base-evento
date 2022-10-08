@@ -1,0 +1,3 @@
+hackthon_local:
+    resource: "@ApplicationHackthonLocalBundle/Controller/"
+    type:     annotation

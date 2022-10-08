@@ -1,0 +1,3 @@
+hackthon_atividadeevento:
+    resource: "@ApplicationHackthonAtividadeEventoBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+   HackThon Unilasalle RJ
+{% endblock %}
+
+ {% block stylesheets %}
+     {{ parent() }}
+
+ {% endblock %}
+
+{% block javascriptsHeader %}
+    {{ parent() }}
+
+{% endblock %}
+
+
+{% block body %}
+
+
+    {{ include('site/blocks/header.html.twig') }}
+
+    {{ include('site/blocks/hero.html.twig') }}
+
+    <main id="main">
+
+        {{ include('site/blocks/about.html.twig') }}
+
+        {{ include('site/blocks/speakers.html.twig') }}
+
+        {{ include('site/blocks/schedule.html.twig') }}
+
+        {{ include('site/blocks/venue.html.twig') }}
+
+        {{ include('site/blocks/gallery.html.twig') }}
+
+        {{ include('site/blocks/supporters.html.twig') }}
+
+        {{ include('site/blocks/faq.html.twig') }}
+
+        {{ include('site/blocks/tickets.html.twig') }}
+
+        {{ include('site/blocks/contact.html.twig') }}
+
+        {{ include('site/blocks/footer.html.twig') }}
+
+
+
+    </main>
+
+{% endblock %}
+
+
+
+{% block javascriptsFooter %}
+    {{ parent() }}
+
+
+{% endblock %}

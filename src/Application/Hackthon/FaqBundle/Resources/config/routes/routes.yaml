@@ -1,0 +1,3 @@
+hackthon_faq:
+    resource: "@ApplicationHackthonFaqBundle/Controller/"
+    type:     annotation
