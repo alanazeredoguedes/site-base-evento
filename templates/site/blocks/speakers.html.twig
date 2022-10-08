@@ -6,18 +6,32 @@
         </div>
 
         <div class="row">
-            {% for i in 1..6 %}
+            {% for index, palestrante in  palestrantes %}
             <div class="col-lg-4 col-md-6">
                 <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('img/speakers/1.jpg') }}" alt="Speaker 1" class="img-fluid">
+                    {% thumbnail palestrante.foto , 'reference' with {'class': 'imagem_palestrante img-fluid'}  %}
                     <div class="details">
-                        <h3><a href="speaker-details.html">{{ i }} Brenden Legros</a></h3>
-                        <p>Quas alias incidunt</p>
+                        <h3><a href="javascript:void(0)">{{ palestrante.nome }}</a></h3>
+                        <p>{{ palestrante.descricao }}</p>
                         <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
-                            <a href=""><i class="bi bi-instagram"></i></a>
-                            <a href=""><i class="bi bi-linkedin"></i></a>
+
+
+                            {% if palestrante.email is defined and palestrante.email is not empty %}
+                                <a target="_blank" href="{{ palestrante.email }}"><i class="bi bi-mailbox2"></i></a>
+                            {% endif %}
+
+                            {% if palestrante.twitter is defined and palestrante.twitter is not empty %}
+                                <a target="_blank" href="{{ palestrante.twitter }}"><i class="bi bi-twitter"></i></a>
+                            {% endif %}
+
+                            {% if palestrante.instragram is defined and palestrante.instragram is not empty %}
+                                <a target="_blank" href="{{ palestrante.instragram }}"><i class="bi bi-instagram"></i></a>
+                            {% endif %}
+
+                            {% if palestrante.linkedin is defined and palestrante.linkedin is not empty %}
+                                <a target="_blank" href="{{ palestrante.linkedin }}"><i class="bi bi-linkedin"></i></a>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>

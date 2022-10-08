@@ -127,7 +127,7 @@ class FaqAdmin extends AbstractAdmin
              ],
                 'help' => '',
             ])
-            ->add('Resposta', TextType::class, [
+            ->add('Resposta', TextareaType::class, [
                 'label' => 'Resposta:',
                 'required' => true,
                 

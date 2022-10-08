@@ -36,7 +36,7 @@ class Faq
 
     /**
      *
-     * @ORM\Column(name="Resposta", type="string")
+     * @ORM\Column(name="Resposta", type="text")
      */
     private $Resposta;
     

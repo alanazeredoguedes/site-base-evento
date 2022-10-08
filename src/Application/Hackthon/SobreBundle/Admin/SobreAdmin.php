@@ -71,7 +71,8 @@ class SobreAdmin extends AbstractAdmin
     
     protected function configureRoutes(RouteCollection $collection)
     {
-        //$collection->remove('create');
+        $collection->remove('create');
+        $collection->remove('delete');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
@@ -117,7 +118,7 @@ class SobreAdmin extends AbstractAdmin
                 'actions' => [
                     'show' => [],
                     'edit' => [],
-                    'delete' => [],
+                    //'delete' => [],
                 ],
             ]);
     }
@@ -126,7 +127,7 @@ class SobreAdmin extends AbstractAdmin
     {
         $formMapper
             
-            ->add('descricao', TextType::class, [
+            ->add('descricao', TextareaType::class, [
                 'label' => 'Descricao:',
                 'required' => true,
                 
@@ -144,7 +145,7 @@ class SobreAdmin extends AbstractAdmin
              ],
                 'help' => '',
             ])
-            ->add('quando', TextType::class, [
+            ->add('quando', TextareaType::class, [
                 'label' => 'Quando:',
                 'required' => true,
                 

@@ -36,31 +36,31 @@ class Palestrante
 
     /**
      *
-     * @ORM\Column(name="descricao", type="string")
+     * @ORM\Column(name="descricao", type="string", nullable=true)
      */
     private $descricao;
 
     /**
      *
-     * @ORM\Column(name="instragram", type="string")
+     * @ORM\Column(name="instragram", type="string", nullable=true)
      */
     private $instragram;
 
     /**
      *
-     * @ORM\Column(name="linkedin", type="string")
+     * @ORM\Column(name="linkedin", type="string", nullable=true)
      */
     private $linkedin;
 
     /**
      *
-     * @ORM\Column(name="email", type="string")
+     * @ORM\Column(name="email", type="string", nullable=true)
      */
     private $email;
 
     /**
      *
-     * @ORM\Column(name="twitter", type="string")
+     * @ORM\Column(name="twitter", type="string", nullable=true)
      */
     private $twitter;
 

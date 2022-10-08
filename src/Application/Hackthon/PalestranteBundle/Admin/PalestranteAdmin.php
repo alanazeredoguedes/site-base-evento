@@ -173,47 +173,31 @@ class PalestranteAdmin extends AbstractAdmin
             ])
             ->add('descricao', TextType::class, [
                 'label' => 'Descricao:',
-                'required' => true,
-                
-                'constraints' => [ 
-                    new NotNull(),
-             ],
+                'required' => false,
+
                 'help' => '',
             ])
-            ->add('instragram', TextType::class, [
+            ->add('instragram', UrlType::class, [
                 'label' => 'Instragram:',
-                'required' => true,
-                
-                'constraints' => [ 
-                    new NotNull(),
-             ],
+                'required' => false,
+
                 'help' => '',
             ])
-            ->add('linkedin', TextType::class, [
+            ->add('linkedin', UrlType::class, [
                 'label' => 'Linkedin:',
-                'required' => true,
-                
-                'constraints' => [ 
-                    new NotNull(),
-             ],
+                'required' => false,
+
                 'help' => '',
             ])
-            ->add('email', TextType::class, [
+            ->add('email', UrlType::class, [
                 'label' => 'Email:',
-                'required' => true,
-                
-                'constraints' => [ 
-                    new NotNull(),
-             ],
+                'required' => false,
                 'help' => '',
             ])
-            ->add('twitter', TextType::class, [
+            ->add('twitter', UrlType::class, [
                 'label' => 'Twitter:',
-                'required' => true,
-                
-                'constraints' => [ 
-                    new NotNull(),
-             ],
+                'required' => false,
+
                 'help' => '',
             ])
         ;
