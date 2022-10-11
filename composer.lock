@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8eb1b3d0bd98df526cd165a5754c852",
+    "content-hash": "64b17170e9fd67407a2eeb4b577834f5",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2042,6 +2042,10 @@
             "keywords": [
                 "CKEditor"
             ],
+            "support": {
+                "issues": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/issues",
+                "source": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/tree/2.4.0"
+            },
             "time": "2022-01-07T12:34:18+00:00"
         },
         {

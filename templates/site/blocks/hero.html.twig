@@ -1,8 +1,25 @@
-<section id="hero" style="height: 50vh">
+{% if banner.imagem is defined and banner.imagem is not empty %}
+<style>
+    #hero {
+        width: 100%;
+        height: 100vh;
+        background: url({{ asset('/upload/media/padrao/0001/01/'  ~ banner.imagem.providerReference) }}) top center;
+        background-size: cover;
+        overflow: hidden;
+        position: relative;
+    }
+</style>
+{% endif %}
+
+
+<section id="hero" style="height: 100vh">
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-        <h1 class="mb-4 pb-0">The Annual<br><span>Marketing</span> Conference</h1>
-        <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York<br> dsadsd </p>
-        <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+{#        <h1 class="mb-4 pb-0">The Annual<br><span>Marketing</span> Conference</h1>#}
+        {{ banner.titulo|raw }}
+        <p class="mb-4 pb-0">{{ banner.descricao }}</p>
+        {% if banner.video is defined and banner.video is not empty %}
+            <a href="{{ banner.video }}" class="glightbox play-btn mb-4"></a>
+        {% endif %}
         <a href="#about" class="about-btn scrollto">Sobre o evento</a>
     </div>
 </section>

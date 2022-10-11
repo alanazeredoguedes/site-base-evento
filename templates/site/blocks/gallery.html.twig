@@ -2,8 +2,8 @@
 
     <div class="container" data-aos="fade-up">
         <div class="section-header">
-            <h2>Gallery</h2>
-            <p>Confira nossa galeria de eventos recentes</p>
+            <h2>Galeria</h2>
+            <p>Confira as imagens de nossos eventos recentes</p>
         </div>
     </div>
 
@@ -11,12 +11,15 @@
         <div class="swiper-wrapper align-items-center">
 
 
-            {% for i in 1..8 %}
-            <div class="swiper-slide">
-                <a href="{{ asset('img/gallery/1.jpg') }}" class="gallery-lightbox">
-                    <img src="{{ asset('img/gallery/1.jpg') }}" class="img-fluid" alt="">
-                </a>
-            </div>
+
+
+            {% for img in  galeriaImagens.imagens.galleryHasMedias %}
+
+                <div class="swiper-slide">
+                    <a href="{{ asset('/upload/media/padrao/0001/01/'  ~ img.media.providerReference) }}" class="gallery-lightbox">
+                        {% thumbnail img.media , 'reference' with {'class': 'imagens_galeria img-fluid'}  %}
+                    </a>
+                </div>
             {% endfor %}
 
 

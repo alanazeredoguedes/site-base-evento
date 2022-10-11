@@ -71,7 +71,9 @@ class LocalAdmin extends AbstractAdmin
     
     protected function configureRoutes(RouteCollection $collection)
     {
-        //$collection->remove('create');
+        $collection->remove('create');
+        $collection->remove('delete');
+        $collection->remove('show');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
@@ -143,7 +145,7 @@ class LocalAdmin extends AbstractAdmin
              ],
                 'help' => '',
             ])
-            ->add('descricao', TextType::class, [
+            ->add('descricao', TextareaType::class, [
                 'label' => 'Descricao:',
                 'required' => true,
                 
@@ -152,7 +154,7 @@ class LocalAdmin extends AbstractAdmin
              ],
                 'help' => '',
             ])
-            ->add('iframeGoogleMaps', TextType::class, [
+            ->add('iframeGoogleMaps', TextareaType::class, [
                 'label' => 'IframeGoogleMaps:',
                 'required' => true,
                 

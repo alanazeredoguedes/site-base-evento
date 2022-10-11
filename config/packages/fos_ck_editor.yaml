@@ -1,0 +1,8 @@
+fos_ck_editor:
+  configs:
+    my_config:
+      toolbar: "full"
+  toolbars:
+    items:
+      full.colors: [ "TextColor", "BGColor" ]
+      full.document: [ "Source", "-", "Preview", "Print" ]

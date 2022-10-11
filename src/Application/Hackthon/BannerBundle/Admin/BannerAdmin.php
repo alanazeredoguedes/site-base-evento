@@ -4,6 +4,7 @@ namespace App\Application\Hackthon\BannerBundle\Admin;
 
 use App\Application\Hackthon\BannerBundle\Entity\Banner;
 
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -71,7 +72,9 @@ class BannerAdmin extends AbstractAdmin
     
     protected function configureRoutes(RouteCollection $collection)
     {
-        //$collection->remove('create');
+        $collection->remove('create');
+        $collection->remove('delete');
+        $collection->remove('show');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
@@ -130,7 +133,7 @@ class BannerAdmin extends AbstractAdmin
                             // 'hide_context' => true,
                     ],
             ])
-            ->add('titulo', TextType::class, [
+            ->add('titulo', TextareaType::class, [
                 'label' => 'Titulo:',
                 'required' => true,
                 
@@ -139,13 +142,18 @@ class BannerAdmin extends AbstractAdmin
              ],
                 'help' => '',
             ])
-            ->add('descricao', TextType::class, [
+            ->add('descricao', TextareaType::class, [
                 'label' => 'Descricao:',
                 'required' => true,
                 
                 'constraints' => [ 
                     new NotNull(),
              ],
+                'help' => '',
+            ])
+            ->add('video', TextType::class, [
+                'label' => 'Video Youtube:',
+                'required' => false,
                 'help' => '',
             ])
         ;

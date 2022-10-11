@@ -36,13 +36,13 @@ class Local
 
     /**
      *
-     * @ORM\Column(name="descricao", type="string")
+     * @ORM\Column(name="descricao", type="text")
      */
     private $descricao;
 
     /**
      *
-     * @ORM\Column(name="iframeGoogleMaps", type="string")
+     * @ORM\Column(name="iframeGoogleMaps", type="text")
      */
     private $iframeGoogleMaps;
 

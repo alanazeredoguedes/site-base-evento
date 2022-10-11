@@ -41,6 +41,12 @@ class Banner
     private $descricao;
 
     /**
+     *
+     * @ORM\Column(name="video", type="string", nullable=true)
+     */
+    private $video;
+
+    /**
      * @var Media
      *
      * @ORM\ManyToOne (targetEntity="App\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
@@ -101,4 +107,18 @@ class Banner
     {
         $this->imagem = $imagem;
     }
+
+
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+
+    public function setVideo($video): void
+    {
+        $this->video = $video;
+    }
+
+
 }

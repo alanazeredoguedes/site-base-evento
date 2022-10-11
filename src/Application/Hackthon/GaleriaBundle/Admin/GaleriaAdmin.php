@@ -71,7 +71,9 @@ class GaleriaAdmin extends AbstractAdmin
     
     protected function configureRoutes(RouteCollection $collection)
     {
-        //$collection->remove('create');
+        $collection->remove('create');
+        $collection->remove('delete');
+        $collection->remove('show');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
@@ -93,8 +95,8 @@ class GaleriaAdmin extends AbstractAdmin
         unset($this->listModes['mosaic']);
 
         $listMapper
-            //->addIdentifier('id')
-            
+            ->addIdentifier('id')
+
             ->addIdentifier('titulo', null, [
                 'label' => 'Titulo',
                 
